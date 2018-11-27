@@ -1,4 +1,6 @@
 	var cuenta = 0;
+	var valor = 0;
+	var valCaja = 0;
 	$(document).ready(function(){
 		
      $(".hide").hide();
@@ -12,7 +14,9 @@
 			$(":image");
 
 			$(".right").append(
-				'<div class="note">'
+				'<div class="note note'
+				+valCaja
+				+'">'
 				+'<div class="pin pin-mov">'
 				+'<i class="fas fa-times"></i>'
 				+'</div>'
@@ -22,13 +26,15 @@
                 +'<div class="text">'
                 + text
                 +'</div>'
-                +'<a id="like" class="card__like card__like__red" onclick="contador()">' 
+                +'<button id="'
+                + valor
+                +'"class="card__like" onclick="contador()">' 
                 +'<center>'
                 +'<span id="timesClicked">'
                 + cuenta
                 +'</span>'
                 +'</center>'
-                +'<i class="fas fa-heart" aria-hidden="true"></i></a>'
+                +'<i class="fas fa-heart" aria-hidden="true"></i></button>'
                 +'</div>')
 			$("#mytext").val('');
 			$("#mytext").focus();
@@ -40,46 +46,29 @@
 	        $(this).parent().fadeOut();
 		});
 
-
-$('.fa-heart').click(function() {
-	        
-	        console.log('entro a heart');        
-		});
-
-
-$('.fa-heart').click(function(event){
-	event.preventDefault();
-	event.stopPropagation();
-
- $(this).toggleClass('card__like__red');
 });
 
 
+function es(){
+	valor++;
+	valCaja++;
+	cuenta = 0;
+}
 
-});
-
-  //like en el corazon
-
-/*function counter(e){
-	console.log('entro a heart');
-	var timesClicked = 0;
-    timesClicked++;
-    document.getElementById('timesClicked').innerHTML = timesClicked;
-    event.preventDefault();
-};
-
-$('.card__like').click(function(event){
-	event.preventDefault();
-	event.stopPropagation();
-$(this).toggleClass('card__like--red');
-});
-*/
 function contador() {
-	cuenta++;
+
+
+	var like = document.getElementById(valor);
+	if(valor == valCaja){
+	like.className = 'card__like card__like__red';
+	event.preventDefault();
+		cuenta++;
 
 	var counter = cuenta;
 	$( "#timesClicked" ).html( counter );
-	event.preventDefault();
+	}
+
+
 
 	//document.getElementById("timesClicked").=cuenta
 	//console.log(cuenta);
